@@ -1,3 +1,12 @@
-﻿name=Иван
-age=30
-city=Москва
+﻿LAST CHECK LOG:
+
+name = server1
+ip_address = 104.16.132.229
+port = 27015
+packet_loss = 6,73
+server_status = Online
+CPU = 22
+RAM = 25
+HDD = 56
+players_online = 7
+admins_online = 2

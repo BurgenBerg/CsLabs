@@ -11,6 +11,8 @@ class Program
 
         string filename = "server_log.txt";
 
+        string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
         Console.WriteLine("Вас приветствует утилита для администратора игрового сервера.\nНа данный момент таков статус серверов:");
 
         string name = "server1";
@@ -32,18 +34,18 @@ class Program
         int players_online = random.Next(5, 118);
         int admins_online = random.Next(2, 10);
 
-        Console.WriteLine($"Состояние: {server_status}");
+        Console.WriteLine($"\nСостояние: {server_status}");
         Console.WriteLine($"Название сервера: {name}");
         Console.WriteLine($"IP-адрес (IPv4): {ip_address}, Порт: {port}");
 
-        Console.WriteLine($"Пинг составляет: {ping} ms");
+        Console.WriteLine($"\nПинг составляет: {ping} ms");
         Console.WriteLine($"Потеря пакетов: {packet_loss}%");
 
-        Console.WriteLine($"CPU: {cpu}%");
+        Console.WriteLine($"\nCPU: {cpu}%");
         Console.WriteLine($"RAM: {ram}%");
         Console.WriteLine($"HHD: {hhd}%");
 
-        Console.WriteLine($"Игроков онлайн: {players_online}/128");
+        Console.WriteLine($"\nИгроков онлайн: {players_online}/128");
         Console.WriteLine($"Админов онлайн: {admins_online}/10");
 
         Console.WriteLine("Сохранить логи текущего состояния? (y/n)");
@@ -52,9 +54,17 @@ class Program
         {
             string[] lines =
             {
-                "name=Иван",
-                "age=30",       /// ДОДЕЛАТЬ ЭТУ ХУЙНЮ СРООООЧНООООО
-                "city=Москва"
+                $"LAST CHECK LOG:\n\nname = {name}",
+                $"ip_address = {ip_address}",
+                $"port = {port}",
+                $"packet_loss = {packet_loss}",
+                $"server_status = {server_status}",
+                $"CPU = {cpu}",
+                $"RAM = {ram}",
+                $"HDD = {hhd}",
+                $"players_online = {players_online}",
+                $"admins_online = {admins_online}",
+                
             };
             File.WriteAllLines(filename, lines, Encoding.UTF8);
         }
