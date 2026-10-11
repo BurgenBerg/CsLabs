@@ -1,9 +1,30 @@
 ﻿namespace sem_1_lab_02_server_config;
 
-class Program
+public class Program
 {
+    public static string CheckConfiguration(int players, int memory, bool useHttps, bool publicServer)
+    {
+        // 1. Количество игроков — высший приоритет
+        if (players <= 0)
+            return "Запуск невозможен: количество игроков должно быть больше нуля.";
+
+        // 2. Слишком мало оперативной памяти — запуск невозможен
+        if (memory < 2)
+            return "Запуск невозможен: серверу недостаточно оперативной памяти.";
+
+        // 3. Слишком много игроков для такого объёма памяти — предупреждение
+        if (players > memory * 20)
+            return "Запуск возможен с предупреждением: для такого количества игроков рекомендуется больше оперативной памяти.";
+
+        // 4. Публичный сервер — предупреждение о пароле
+        if (publicServer)
+            return "Запуск возможен с предупреждением: публичный сервер защищён паролем.";
+
+        // 5. Всё в порядке
+        return "Сервер готов к запуску.";
+    }
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        
     }
 }

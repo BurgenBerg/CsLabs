@@ -3,10 +3,10 @@
 name = server1
 ip_address = 104.16.132.229
 port = 27015
-packet_loss = 6,73
+packet_loss = 5,31
 server_status = Online
-CPU = 22
-RAM = 25
+CPU = 11
+RAM = 57
 HDD = 56
-players_online = 7
-admins_online = 2
+players_online = 22
+admins_online = 7
