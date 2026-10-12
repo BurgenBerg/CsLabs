@@ -2,29 +2,28 @@
 
 public class Program
 {
-    public static string CheckConfiguration(int players, int memory, bool useHttps, bool publicServer)
+    public static string CheckConfiguration(int players, int minRAM, bool publicServer, bool passwordServer)
     {
-        // 1. Количество игроков — высший приоритет
         if (players <= 0)
             return "Запуск невозможен: количество игроков должно быть больше нуля.";
 
-        // 2. Слишком мало оперативной памяти — запуск невозможен
-        if (memory < 2)
+        if (minRAM < 2)
             return "Запуск невозможен: серверу недостаточно оперативной памяти.";
 
-        // 3. Слишком много игроков для такого объёма памяти — предупреждение
-        if (players > memory * 20)
+        if (players > minRAM * 20)
             return "Запуск возможен с предупреждением: для такого количества игроков рекомендуется больше оперативной памяти.";
 
-        // 4. Публичный сервер — предупреждение о пароле
-        if (publicServer)
+        if (passwordServer)
             return "Запуск возможен с предупреждением: публичный сервер защищён паролем.";
 
-        // 5. Всё в порядке
+        if (publicServer == false)
+            return "Запуск возможен с предупреждением: сервер не является публичным (доступ возможен только по прямому подключению)";
+
         return "Сервер готов к запуску.";
     }
     static void Main(string[] args)
     {
-        
+        Console.WriteLine("------------------------------ Рутинная проверка работоспособности заданной конфигурации сервера ------------------------------");
+        Console.WriteLine($"\n Автоматическая проверка показала: {CheckConfiguration(128, 8, true, false)}\n\n" + new string('-', 127));
     }
 }
